@@ -101,8 +101,7 @@ public class EditLegalEntity {
 		}
 		driver.findElement(By.xpath("//span[text()='Company Name']/parent::label/following-sibling::input")).clear();
 		driver.findElement(By.xpath("//span[text()='Company Name']/parent::label/following-sibling::input")).sendKeys("TestLeaf");
-		driver.findElement(By.xpath("//span[text()='Description']/parent::label/following-sibling::textarea")).clear();
-		driver.findElement(By.xpath("//span[text()='Description']/parent::label/following-sibling::textarea")).clear();
+		driver.findElement(By.xpath("//span[text()='Description']/parent::label/following-sibling::textarea")).clear();		
 		driver.findElement(By.xpath("//span[text()='Description']/parent::label/following-sibling::textarea")).sendKeys("Sales");
 		driver.findElement(By.xpath("//span[text()='Street']/parent::label/following-sibling::textarea")).clear();		
 		driver.findElement(By.xpath("//span[text()='Street']/parent::label/following-sibling::textarea")).sendKeys("Nethaji");
