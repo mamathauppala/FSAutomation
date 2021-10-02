@@ -65,7 +65,7 @@ public class CreateTask {
 			driver.quit();
 			Assert.fail();
 		}
-		//checking successalert
+		//checking successalert message
 		String successAlertMessage="";
 		try {
 			WebElement alretElement=driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/div/span"));
