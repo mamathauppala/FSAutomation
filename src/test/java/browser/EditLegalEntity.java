@@ -1,8 +1,8 @@
 package browser;
 
 import java.time.Duration;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +15,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class EditLegalEntity {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
@@ -87,15 +87,79 @@ public class EditLegalEntity {
 			System.out.println("Problem while slecting the show actions menu :"+e.getMessage());
 			Assert.fail();
 		}
-		//clciking on the edit button
+		//Clicking on the edit button
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		//Thread.sleep(3000);
 		try {
-			driver.findElement(By.xpath("(//a[@title='Edit']")).click();
+			WebElement EditEle=driver.findElement(By.xpath("//a[@title='Edit']"));
+			//wait.until(ExpectedConditions.visibilityOf(EditEle));
+			js.executeScript("arguments[0].click();",EditEle );
+			//driver.findElement(By.xpath("(//a[@title='Edit']")).click();
 		} catch (Exception e) {
 			System.out.println("Problem while clicking on the edit button :"+e.getMessage());
 			Assert.fail();
 		}
-		
+		driver.findElement(By.xpath("//span[text()='Company Name']/parent::label/following-sibling::input")).clear();
+		driver.findElement(By.xpath("//span[text()='Company Name']/parent::label/following-sibling::input")).sendKeys("TestLeaf");
+		driver.findElement(By.xpath("//span[text()='Description']/parent::label/following-sibling::textarea")).clear();
+		driver.findElement(By.xpath("//span[text()='Description']/parent::label/following-sibling::textarea")).clear();
+		driver.findElement(By.xpath("//span[text()='Description']/parent::label/following-sibling::textarea")).sendKeys("Sales");
+		driver.findElement(By.xpath("//span[text()='Street']/parent::label/following-sibling::textarea")).clear();		
+		driver.findElement(By.xpath("//span[text()='Street']/parent::label/following-sibling::textarea")).sendKeys("Nethaji");
+		driver.findElement(By.xpath("//div[@class='uiPopupTrigger']/div/div/a[@class='select']")).click();
+		driver.findElement(By.xpath("//a[@title='Active']")).click();
+		driver.findElement(By.xpath("//button[@data-aura-class='uiButton forceActionButton']/span[text()='Save']")).click();
+		//Capturing the edit successmessage
+				WebElement alretElementEdit = driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/div/span"));
 
+				try {
+					wait.until(ExpectedConditions.visibilityOf(alretElementEdit));
+					String successEditMsg = alretElementEdit.getText();
+					System.out.println(successEditMsg);
+				} catch (Exception e) {
+					System.out.println("Problem while capturing the edit success message : "+ e.getMessage());
+					Assert.fail();
+				}
+				Thread.sleep(3000);
+				try {
+					WebElement ShowActionEle = driver
+							.findElement(By.xpath("//span[text()='Show Actions']/preceding-sibling::span"));
+					wait.until(ExpectedConditions.visibilityOf(ShowActionEle));
+					ShowActionEle.click();
+				} catch (Exception e) {
+					System.out.println("Problem while slecting the show actions menu :"+e.getMessage());
+					Assert.fail();
+				}
+				try {
+					WebElement ShowActionEle = driver
+							.findElement(By.xpath("//span[text()='Show Actions']/preceding-sibling::span"));
+					wait.until(ExpectedConditions.visibilityOf(ShowActionEle));
+					ShowActionEle.click();
+				} catch (Exception e) {
+					System.out.println("Problem while slecting the show actions menu :"+e.getMessage());
+					Assert.fail();
+				}
+				//Clicking on the edit button
+				
+				//Thread.sleep(3000);
+				try {
+					WebElement EditEle=driver.findElement(By.xpath("//a[@title='Edit']"));
+					//wait.until(ExpectedConditions.visibilityOf(EditEle));
+					js.executeScript("arguments[0].click();",EditEle );
+					//driver.findElement(By.xpath("(//a[@title='Edit']")).click();
+				} catch (Exception e) {
+					System.out.println("Problem while clicking on the edit button :"+e.getMessage());
+					Assert.fail();
+				}
+				
+				if(driver.findElement(By.xpath("//a[text()='Active']")).isDisplayed()) {
+					System.out.println("Status is Active .Passed");
+				}else {
+					System.out.println("Status not updated to Active .Test case failed");
+					driver.quit();
+					Assert.fail();
+				}
+			
 	}
 
 }
