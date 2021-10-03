@@ -58,9 +58,10 @@ public class CreateTaskWithoutMand {
 				driver.findElement(By.xpath("//span[@title='Contacts']")).click();
 				driver.findElement(By.xpath("//input[@title='Search Contacts']")).click();
 				driver.findElement(By.xpath("//a[@role='option']/div[2]/div[1]")).click();
-				/*WebElement maxele=driver.findElement(By.xpath("//svg[@data-key='expand_alt']"));
-				JavascriptExecutor js = (JavascriptExecutor) driver;
-				js.executeScript("arguments[0].click();",maxele );*/
+				Thread.sleep(8000);
+				WebElement maxele=driver.findElement(By.xpath("//*[@data-key='expand_alt']"));				
+				maxele.click();
+				
 				driver.findElement(By.xpath("(//span[text()='Save'])[2]")).click();
 			} catch (Exception e) {
 				System.out.println("problem while clicking on the entering data or click on save button : "+e.getMessage());
@@ -70,6 +71,7 @@ public class CreateTaskWithoutMand {
 			//checking successalert message
 			String successAlertMessage="";
 			try {
+				//change xpath
 				WebElement alretElement=driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/div/span"));
 				WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(30));		
 				wait.until(ExpectedConditions.visibilityOf(alretElement));
