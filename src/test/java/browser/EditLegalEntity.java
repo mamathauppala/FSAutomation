@@ -109,7 +109,7 @@ public class EditLegalEntity {
 		driver.findElement(By.xpath("//a[@title='Active']")).click();
 		driver.findElement(By.xpath("//button[@data-aura-class='uiButton forceActionButton']/span[text()='Save']")).click();
 		//Capturing the edit successmessage
-				WebElement alretElementEdit = driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/div/span"));
+				WebElement alretElementEdit = driver.findElement(By.xpath("//span[@data-aura-class='forceActionsText']"));
 
 				try {
 					wait.until(ExpectedConditions.visibilityOf(alretElementEdit));

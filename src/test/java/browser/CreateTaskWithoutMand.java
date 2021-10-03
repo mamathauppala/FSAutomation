@@ -72,7 +72,7 @@ public class CreateTaskWithoutMand {
 			String successAlertMessage="";
 			try {
 				//change xpath
-				WebElement alretElement=driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/div/span"));
+				WebElement alretElement=driver.findElement(By.xpath("//span[@data-aura-class='forceActionsText']"));
 				WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(30));		
 				wait.until(ExpectedConditions.visibilityOf(alretElement));
 				successAlertMessage = alretElement.getText();
