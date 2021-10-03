@@ -24,7 +24,7 @@ public class CreateTask {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 		try {
-			// launch the application
+			// launch the application sales
 			driver.get("https://login.salesforce.com/");
 			// sign in
 			driver.findElement(By.id("username")).sendKeys("fullstack@testleaf.com");
