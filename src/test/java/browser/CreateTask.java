@@ -73,8 +73,10 @@ public class CreateTask {
 			wait.until(ExpectedConditions.visibilityOf(alretElement));
 			successAlertMessage = alretElement.getText();
 			System.out.println(successAlertMessage);
+			driver.quit();
 		} catch (Exception e) {
 			System.out.println("Problem while showing success alert :"+e.getMessage());
+			driver.quit();
 			Assert.fail();
 		}
 	}
