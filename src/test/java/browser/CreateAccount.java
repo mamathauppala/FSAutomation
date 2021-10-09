@@ -12,12 +12,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CreateAccount {
-
-	public static void main(String[] args) throws InterruptedException {
+@Test
+	public  void salescreateaccount() throws InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
@@ -58,10 +59,10 @@ public class CreateAccount {
 			driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).sendKeys("Sales");
 			
 			// clicking on sales button
-			/*driver.findElement(
+			driver.findElement(
 					By.xpath("//p[@title='Manage your sales process with accounts, leads, opportunities, and more']"))
 					.click();
-					*/
+					
 		} catch (Exception e) {
 			System.out.println("Problem while searching for sales or clicking on sales :"+e.getMessage());
 			Assert.fail();
@@ -109,7 +110,7 @@ public class CreateAccount {
 		System.out.println(ActualMessage);
 		//Assert.assertEquals(successAlertMessage, "Opportunity \"Salesforce Automation by Mamatha\" was created.");
 		
-		if(successAlertMessage.equals("Account \"Salesforce Automation by Mamatha1\" was created.")) {
+		if(successAlertMessage.equals("Account \"Salesforce Automation by Mamatha\" was created.")) {
 			
 			System.out.println("Passed");
 			driver.quit();
@@ -120,7 +121,7 @@ public class CreateAccount {
 			
 		}
 		
-		
-	}
+	}	
+	
 
 }
