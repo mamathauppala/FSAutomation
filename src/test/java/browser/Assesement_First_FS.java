@@ -75,10 +75,10 @@ public class Assesement_First_FS {
 			System.out.println("Problem while selecting the home menu : "+e.getMessage());
 			Assert.fail();
 		}
-		/* Test
+		
 		//getting the closed ,open values and set goal
 		
-		//try {
+		
 			String closedValue=driver.findElement(By.xpath("(//ul[@class='metricRow']/li/span[@data-aura-class='uiOutputText'])[1]")).getText();
 			System.out.println(closedValue);
 			closedValue = closedValue.replaceAll("[^\\d]", " ");
@@ -93,12 +93,9 @@ public class Assesement_First_FS {
 				driver.findElement(By.xpath("//*[@data-key='edit']")).click();
 				driver.findElement(By.xpath("//div[@class='goalInputRow']/input")).sendKeys("10000");
 				driver.findElement(By.xpath("//span[text()='Save']")).click();
-				
 			}
-		/*} catch (Exception e) {
-			System.out.println("problem while getting values or setting goal : "+e.getMessage());
-			Assert.fail();
-		}*/
+				
+		
 		
 		try {
 			//clicking on the dropdown menu to select Dashboard
@@ -124,10 +121,10 @@ public class Assesement_First_FS {
 		
 		
 		try {
-			//Enter dashboard details
-			WebElement dashboardname=driver.findElement(By.xpath("//input[@id='dashboardNameInput']"));
+			//Enter dashboard details		
 			
 			wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(0));
+			WebElement dashboardname=driver.findElement(By.xpath("//input[@id='dashboardNameInput']"));
 			//driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title=\"dashboard\"]")));
 			dashboardname.sendKeys("Mamatha Dashboard");
 			driver.findElement(By.xpath("//input[@id='dashboardDescriptionInput']")).sendKeys("Dashboard desc");
