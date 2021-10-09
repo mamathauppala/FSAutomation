@@ -16,7 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Assesement_First_FS {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
@@ -123,9 +123,9 @@ public class Assesement_First_FS {
 		try {
 			//Enter dashboard details		
 			
-			wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(0));
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='dashboard']")));
 			WebElement dashboardname=driver.findElement(By.xpath("//input[@id='dashboardNameInput']"));
-			//driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title=\"dashboard\"]")));
+			
 			dashboardname.sendKeys("Mamatha Dashboard");
 			driver.findElement(By.xpath("//input[@id='dashboardDescriptionInput']")).sendKeys("Dashboard desc");
 			driver.findElement(By.xpath("//button[text()='Create']")).click();
@@ -133,7 +133,10 @@ public class Assesement_First_FS {
 			System.out.println("Problem while entering/saving dashboard details :  "+e.getMessage());
 			Assert.fail();
 		}
+		//driver.switchTo().defaultContent();
+		Thread.sleep(20000);
 		driver.findElement(By.xpath("//button[text()='Done']")).click();
+		Thread.sleep(8000);
 		driver.findElement(By.xpath("//button[text()='Subscribe']")).click();
 		//driver.switchTo().defaultContent();
 		try {

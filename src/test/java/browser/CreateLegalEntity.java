@@ -13,31 +13,13 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class CreateLegalEntity {
+public class CreateLegalEntity extends BaseClass{
 @Test
 	public  void salesLegalEntity() {
-		WebDriverManager.chromedriver().setup();
-		ChromeOptions options=new ChromeOptions();
-		options.addArguments("--disable-notifications");
-		ChromeDriver  driver=new ChromeDriver(options);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
-		//Launch app
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
-		try {
-			// launch the application
-			driver.get("https://login.salesforce.com/");
-			// sign in
-			driver.findElement(By.id("username")).sendKeys("fullstack@testleaf.com");
-			driver.findElement(By.id("password")).sendKeys("SelBootcamp$123");
-			driver.findElement(By.id("Login")).click();
-		} catch (Exception e) {
-			System.out.println("Problem while logging into the application :" + e.getMessage());
-			driver.quit();
-			Assert.fail();
-		}
+		
 
 		try {
 			// Click on toggle menu button from the left corner
@@ -96,7 +78,7 @@ public class CreateLegalEntity {
    if(successAlertMessage.equals("Legal Entity \"Salesforce Automation by Mamatha\" was created.")) {
 			
 			System.out.println("Passed");
-			driver.quit();
+			
 		}else {
 			System.out.println("Probem in showing the success alert.Expected : Legal Entity \"Salesforce Automation by Mamatha\" was created." +"  Actual: "+successAlertMessage);
 			driver.quit();
