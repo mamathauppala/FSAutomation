@@ -78,7 +78,7 @@ public class Assesement_First_FS {
 		
 		//getting the closed ,open values and set goal
 		
-		
+		/*
 			String closedValue=driver.findElement(By.xpath("(//ul[@class='metricRow']/li/span[@data-aura-class='uiOutputText'])[1]")).getText();
 			System.out.println(closedValue);
 			closedValue = closedValue.replaceAll("[^\\d]", " ");
@@ -94,7 +94,7 @@ public class Assesement_First_FS {
 				driver.findElement(By.xpath("//div[@class='goalInputRow']/input")).sendKeys("10000");
 				driver.findElement(By.xpath("//span[text()='Save']")).click();
 			}
-				
+			*/	
 		
 		
 		try {
@@ -133,7 +133,9 @@ public class Assesement_First_FS {
 			System.out.println("Problem while entering/saving dashboard details :  "+e.getMessage());
 			Assert.fail();
 		}
-		driver.switchTo().defaultContent();
+		driver.findElement(By.xpath("//button[text()='Done']")).click();
+		driver.findElement(By.xpath("//button[text()='Subscribe']")).click();
+		//driver.switchTo().defaultContent();
 		try {
 			driver.findElement(By.linkText("Private Dashboards")).click();
 		} catch (Exception e) {
