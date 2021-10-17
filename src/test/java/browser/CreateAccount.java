@@ -12,13 +12,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CreateAccount extends BaseClass {
-@Test
-	public  void salescreateaccount() throws InterruptedException {
+@Test(dataProvider="fetchdata")
+	public  void salescreateaccount(String launchName,String accountName) throws InterruptedException {
 		
 		
 
@@ -39,7 +40,7 @@ public class CreateAccount extends BaseClass {
 		}
 		try {
 			// Search for sales
-			driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).sendKeys("Sales");
+			driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).sendKeys(launchName);
 			
 			// clicking on sales button
 			driver.findElement(
@@ -67,7 +68,7 @@ public class CreateAccount extends BaseClass {
 			Assert.fail();
 		}
 		try {
-			driver.findElement(By.xpath("//input[@name='Name']")).sendKeys("Salesforce Automation by Mamatha");
+			driver.findElement(By.xpath("//input[@name='Name']")).sendKeys(accountName);
 			String Text =driver.findElement(By.xpath("//input[@name='Name']")).getText();
 			WebElement Element=driver.findElement(By.xpath("//label[text()='Ownership']/following::div"));
 			js.executeScript("arguments[0].scrollIntoView();", Element);		
@@ -105,6 +106,14 @@ public class CreateAccount extends BaseClass {
 		}
 		
 	}	
+@DataProvider(name="fetchdata")
+public String[][] senddata() {
+	String[][] data=new String[1][2];
+	data[0][0]="sales";
+	data[0][1]="Salesforce Automation by Mamatha";
+	return data;
+	
+}
 	
 
 }
