@@ -13,33 +13,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Assesement_First_FS {
+public class Assesement_First_FS extends BaseClass{
+	@Test
 
-	public static void main(String[] args) throws InterruptedException {
+	public  void Assessement() throws InterruptedException {		
+
 		
-
-		WebDriverManager.chromedriver().setup();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--disable-notifications");
-		ChromeDriver driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-		try {
-			// launch the application
-			driver.get("https://login.salesforce.com/");
-			// sign in
-			driver.findElement(By.id("username")).sendKeys("fullstack@testleaf.com");
-			driver.findElement(By.id("password")).sendKeys("SelBootcamp$123");
-			driver.findElement(By.id("Login")).click();
-		} catch (Exception e) {
-			System.out.println("Problem while logging into the application :" + e.getMessage());
-			Assert.fail();
-		}
+		
 		try {
 			// Click on toggle menu button from the left corner
 			driver.findElement(By.xpath("//div[@class='slds-icon-waffle']")).click();

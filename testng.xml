@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="CraeteSuite">
+<parameter name="url" value="https://login.salesforce.com/"> </parameter>
+<parameter name="username" value="fullstack@testleaf.com"> </parameter>
+<parameter name="password" value="SelBootcamp$123"> </parameter>
   <test thread-count="5" name="Test" verbose="5" parallel="classes">
     <classes>
+    <class name="browser.Assesement_First_FS"/>  
       <class name="browser.CreateAccount"/>
-      <class name="browser.CreateLegalEntity"/>
+      <class name="browser.CreateLegalEntity"/>          
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
